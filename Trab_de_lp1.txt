@@ -1,0 +1,123 @@
+
+/*
+----------- Trabalho de progamação --------------
+    
+    Autores: Yvson Nunes e Marcus Tavares
+
+*/
+
+#include <stdio.h>
+#define TM 100
+#define QNT 2
+
+
+//-------- Registro dos Enderecos dos imoveis -----------
+typedef struct{
+
+    char rua[TM];
+    char numero[TM];
+    char bairro[TM];
+    char CEP[TM];
+    char cidade[TM];
+
+}t_Endereco;
+
+//---------Tipos de Imoveis--------------
+
+typedef struct{
+
+    char anuncio[TM];
+    float valorcasa;
+    char dispo[TM];
+    int pavimentos;
+    int quartos;
+    float areaTerren;
+    float areaConstr;
+    t_Endereco endereco;
+
+} t_Casa;
+
+typedef struct{
+
+    char anuncio[TM];
+    float valor;
+    char dispo[TM];
+    int quartos;
+    char posicao[TM];
+    char andar[TM];
+    float valorCond;
+    int vaga;
+    t_Endereco endereco;
+
+
+}t_Apartameno;
+
+typedef struct{
+
+    char anuncio[TM];
+    float area;
+    t_Endereco endereco;
+
+}t_Terreno;
+
+//----------------------------------------------
+void CadastraArqCasa(t_Casa listCasas[]){
+
+    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de casas","w");
+    int i;
+        if(fp==NULL){
+            printf("Erro ao abrir o arquivo\n");
+        }
+
+            for(i = 0; i < QNT; i++){
+
+                printf("Digite o tiulo do anucio da casa: ");
+                gets((listCasas + i)->anuncio);
+                fprintf(fp,"%s\n",(listCasas + i)->anuncio);
+                printf("Digite o valor da casa: ");
+                scanf("%f%*c",&(listCasas + i)->valorcasa);
+                fprintf(fp,"%f\n",(listCasas + i)->valorcasa);
+                printf("Digite a disponibilidade da casa: ");
+                gets((listCasas + i)->dispo);
+                fprintf(fp,"%s\n",(listCasas + i)->dispo);
+                printf("Digite a quantidade de pavimentos da casa: ");
+                scanf("%d*c",&(listCasas + i)->pavimentos);
+                fprintf(fp,"%d\n",(listCasas + i)->pavimentos);
+                printf("Digite a quantidade de quartos: ");
+                scanf("%d*c",&(listCasas + i)->quartos);
+                fprintf(fp,"%d\n",(listCasas + i)->quartos);
+                printf("Digite a Area do terreno: ");
+                scanf("%f%*c",&(listCasas + i)->areaTerren);
+                fprintf(fp,"%f%\n",(listCasas + i)->areaTerren);
+                printf("Digite a Area construida: ");
+                scanf("%f%*c",&(listCasas + i)->areaConstr);
+                fprintf(fp,"%f\n",(listCasas + i)->areaConstr);
+                printf("Digite a rua: ");
+                gets((listCasas + i)->endereco.rua);
+                fprintf(fp,"%s\n",(listCasas + i)->endereco.rua);
+                printf("Digite o numero: ");
+                gets((listCasas + i)->endereco.numero);
+                fprintf(fp,"%s\n",(listCasas + i)->endereco.numero);
+                printf("Digite o bairro: ");
+                gets((listCasas + i)->endereco.bairro);
+                fprintf(fp,"%s\n",(listCasas + i)->endereco.bairro);
+                printf("Digite o CEP: ");
+                gets((listCasas + i)->endereco.CEP);
+                fprintf(fp,"%s\n",(listCasas + i)->endereco.CEP);
+                printf("Digite a cidade: ");
+                gets((listCasas + i)->endereco.cidade);
+                fprintf(fp,"%s\n",(listCasas + i)->endereco.cidade);
+            }
+
+        fclose(fp);
+}
+
+int main(){
+
+    t_Casa Casas[QNT];
+
+    CadastraArqCasa(Casas);
+
+
+return 0;
+}
