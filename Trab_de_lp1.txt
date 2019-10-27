@@ -55,6 +55,8 @@ typedef struct{
 typedef struct{
 
     char anuncio[TM];
+    float valor;
+    char dispo[TM];
     float area;
     t_Endereco endereco;
 
@@ -63,7 +65,7 @@ typedef struct{
 //----------------------------------------------
 void CadastraArqCasa(t_Casa listCasas[]){
 
-    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de casas","w");
+    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de casas.txt","w");
     int i;
         if(fp==NULL){
             printf("Erro ao abrir o arquivo\n");
@@ -112,12 +114,55 @@ void CadastraArqCasa(t_Casa listCasas[]){
         fclose(fp);
 }
 
+void CadastraArqTerreno(t_Terreno listTerrenos[]){
+
+    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de terrenos.txt","w");
+    int i;
+        for(i = 0; i < QNT; i++){
+
+                printf("Digite o titulo do anucio do terreno: ");
+                gets((listTerrenos + i)->anuncio);
+                fprintf(fp,"%s\n",(listTerrenos + i)->anuncio);
+                printf("Digite o valor do terreno: ");
+                scanf("%f%*c",&(listTerrenos + i)->valor);
+                fprintf(fp,"%f\n",(listTerrenos + i)->valor);
+                printf("Digite a disponibilidade do terreno: ");
+                gets((listTerrenos + i)->dispo);
+                fprintf(fp,"%s\n",(listTerrenos + i)->dispo);
+                printf("Digite o valor da area do terreno: ");
+                scanf("%f%*c",&(listTerrenos + i)->area);
+                fprintf(fp,"%f\n",(listTerrenos + i)->area);
+                printf("Digite o nome da rua: ");
+                gets((listTerrenos + i)->endereco.rua);
+                fprintf(fp,"%s\n",(listTerrenos + i)->endereco.rua);
+                printf("Digite o numero do terreno: ");
+                gets((listTerrenos + i)->endereco.numero);
+                fprintf(fp,"%s\n",(listTerrenos + i)->endereco.numero);
+                printf("Digite o Bairro do terreno: ");
+                gets((listTerrenos + i)->endereco.bairro);
+                fprintf(fp,"%s\n",(listTerrenos + i)->endereco.bairro);
+                printf("Digite o CEP do terreno: ");
+                gets((listTerrenos + i)->endereco.CEP);
+                fprintf(fp,"%s\n",(listTerrenos + i)->endereco.CEP);
+                printf("Digite a Cidade do terreno: ");
+                gets((listTerrenos + i)->endereco.cidade);
+                fprintf(fp,"%s\n",(listTerrenos + i)->endereco.cidade);
+
+        }
+
+      fclose(fp);
+
+}
+
 int main(){
 
     t_Casa Casas[QNT];
+    t_Terreno Terrenos[QNT];
 
-    CadastraArqCasa(Casas);
+    //CadastraArqCasa(Casas);
+    CadastraArqTerreno(Terrenos);
 
 
 return 0;
 }
+
