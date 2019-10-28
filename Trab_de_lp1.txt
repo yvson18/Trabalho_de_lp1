@@ -7,6 +7,7 @@
 */
 
 #include <stdio.h>
+#include <string.h>
 #define TM 100
 #define QNT 2
 
@@ -114,13 +115,71 @@ void CadastraArqCasa(t_Casa listCasas[]){
         fclose(fp);
 }
 
+void CadastraArqApartamento(t_Apartameno listApartamenots[]){
+
+    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de apartamentos.txt","w");
+    int i = 0;
+
+        if(fp==NULL){
+            printf("Erro ao abrir o arquivo\n");
+        }
+
+            for(i = 0; i < QNT; i++){
+
+                 printf("Digite o tiulo do anucio da casa: ");
+                 gets(listApartamenots[i].anuncio);
+                 fprintf(fp,"%s\n",listApartamenots[i].anuncio);
+                 printf("Digite o valor do apartamento: ");
+                 scanf("%f%*c",&listApartamenots[i].valor);
+                 fprintf(fp,"%f\n",listApartamenots[i].valor);
+                 printf("Digite a disponibilidade do apartamento: ");
+                 gets(listApartamenots[i].dispo);
+                 fprintf(fp,"%s\n",listApartamenots[i].dispo);
+                 printf("Digite a quantidade de quartos: ");
+                 scanf("%d%*c",&listApartamenots[i].quartos);
+                 fprintf(fp,"%d",listApartamenots[i].quartos);
+                 printf("Digite a posicao do apartamento: ");
+                 gets(listApartamenots[i].posicao);
+                 fprintf(fp,"%s\n",listApartamenots[i].posicao);
+                 printf("Digite a quantidade de andares: ");
+                 gets(listApartamenots[i].andar);
+                 fprintf(fp,"%s\n",listApartamenots[i].andar);
+                 printf("Digite o valor do condominio: ");
+                 scanf("%f%*c",&listApartamenots[i].valorCond);
+                 fprintf(fp,"%d\n",listApartamenots[i].valorCond);
+                 printf("Digite a quantidade de vagas de garagem: ");
+                 scanf("%d%*c",&listApartamenots[i].vaga);
+                 fprintf(fp,"%d\n",listApartamenots[i].vaga);
+                 printf("Digite a rua do apartamento: ");
+                 gets(listApartamenots[i].endereco.rua);
+                 fprintf(fp,"%s\n",listApartamenots[i].endereco.rua);
+                 printf("Digite o numero do apartamento: ");
+                 gets(listApartamenots[i].endereco.numero);
+                 fprintf(fp,"%s\n",listApartamenots[i].endereco.numero);
+                 printf("Digite o bairro do apartamento: ");
+                 gets(listApartamenots[i].endereco.bairro);
+                 fprintf(fp,"%s\n",listApartamenots[i].endereco.bairro);
+                 printf("Digite o CEP do apartamento: ");
+                 gets(listApartamenots[i].endereco.CEP);
+                 fprintf(fp,"%s\n",listApartamenots[i].endereco.CEP);
+                 printf("Digite a Cidade do apartamento: ");
+                 gets(listApartamenots[i].endereco.cidade);
+                 fprintf(fp,"%s\n",listApartamenots[i].endereco.cidade);
+
+            }
+
+
+    fclose(fp);
+
+}
+
 void CadastraArqTerreno(t_Terreno listTerrenos[]){
 
     FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de terrenos.txt","w");
     int i;
         for(i = 0; i < QNT; i++){
 
-                printf("Digite o titulo do anucio do terreno: ");
+                printf("Digite o titulo do anuncio do terreno: ");
                 gets((listTerrenos + i)->anuncio);
                 fprintf(fp,"%s\n",(listTerrenos + i)->anuncio);
                 printf("Digite o valor do terreno: ");
@@ -153,6 +212,135 @@ void CadastraArqTerreno(t_Terreno listTerrenos[]){
       fclose(fp);
 
 }
+void CarregaDadosCasas(t_Casa listCasas[]){
+
+    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de casas.txt","r");
+    int i = 0;
+
+        if(fp==NULL){
+            printf("Erro ao abrir o arquivo\n");
+        }
+
+        for(i = 0; i < QNT ; i++){
+
+                fscanf(fp,"%[^\n]\n",listCasas[i].anuncio);
+                fscanf(fp,"%f\n",&listCasas[i].valorcasa);
+                fscanf(fp,"%[^\n]\n",listCasas[i].dispo);
+                fscanf(fp,"%d\n",&listCasas[i].pavimentos);
+                fscanf(fp,"%d\n",&listCasas[i].quartos);
+                fscanf(fp,"%f\n",&listCasas[i].areaTerren);
+                fscanf(fp,"%f\n",&listCasas[i].areaConstr);
+                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.rua);
+                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.numero);
+                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.bairro);
+                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.CEP);
+                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.cidade);
+
+
+        }
+
+     fclose(fp);
+}
+void CarregaDadosApartamento(t_Apartameno listApartamenots[]){
+
+     FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de terrenos.txt","r");
+     int i = 0;
+
+        if(fp==NULL){
+            printf("Erro ao abrir o arquivo\n");
+        }
+
+            for(i = 0; i < QNT; i++){
+
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].anuncio);
+                fscanf(fp,"%f\n",&listApartamenots[i].valor);
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].dispo);
+                fscanf(fp,"%d\n",&listApartamenots[i].quartos);
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].posicao);
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].andar);
+                fscanf(fp,"%f\n",&listApartamenots[i].valorCond);
+                fscanf(fp,"%d\n",&listApartamenots[i].vaga);
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.rua);
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.numero);
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.bairro);
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.CEP);
+                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.cidade);
+
+            }
+      fclose(fp);
+}
+
+void CarregaDadosTerrenos(t_Terreno listTerrenos[]){
+
+
+    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de terrenos.txt","r");
+    int i = 0;
+
+       for(i = 0; i < 2; i++){
+
+                fscanf(fp,"%[^\n]\n",listTerrenos[i].anuncio);
+                fscanf(fp,"%f\n",&listTerrenos[i].valor);
+                fscanf(fp,"%[^\n]\n",listTerrenos[i].dispo);
+                fscanf(fp,"%f\n",&listTerrenos[i].area);
+                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.rua);
+                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.numero);
+                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.bairro);
+                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.CEP);
+                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.cidade);
+        }
+
+}
+int BuscaImovelAnuncio(t_Terreno listTerrenos[]){
+
+        char Anuncio[TM];
+        int i;
+
+            printf("Digite o anuncio que deseja encontrar: ");
+            gets(Anuncio);
+
+        for(i = 0; i < TM; i++){
+
+            if(!strcmp(Anuncio,listTerrenos[i].anuncio)){
+                printf("Sentiu meu flow?");
+                break;
+            }
+        }
+}
+
+int BuscaBairro(t_Terreno listTerrenos[]){
+
+        char Bairro[TM];
+        int i;
+
+            printf("Digite o Bairro que deseja encontrar: ");
+            gets(Bairro);
+
+        for(i = 0; i < TM; i++){
+
+            if(!strcmp(Bairro,listTerrenos[i].endereco.bairro)){
+                printf("Sentiu meu flow?");
+                break;
+            }
+        }
+
+}
+
+void BuscaImovelValor(t_Terreno listTerrenos[]){
+
+      float valor;
+      int i;
+
+      scanf("%f",&valor);
+
+      for(i = 0; i < QNT; i++){
+
+        if(listTerrenos[i].valor>valor){
+            printf("%.0f\n",listTerrenos[i].valor);
+         }
+
+      }
+
+}
 
 int main(){
 
@@ -160,9 +348,11 @@ int main(){
     t_Terreno Terrenos[QNT];
 
     //CadastraArqCasa(Casas);
-    CadastraArqTerreno(Terrenos);
-
+    //CadastraArqTerreno(Terrenos);
+    CarregaDadosTerrenos(Terrenos);
+    //BuscaImovel(Terrenos);
+    //BuscaBairro(Terrenos);
+    BuscaImovelValor(Terrenos);
 
 return 0;
 }
-
