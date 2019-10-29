@@ -7,34 +7,34 @@ int main(){
     setlocale(LC_ALL, "Portuguese");
 
     do{
-        puts("      SISTEMA GERENCIADOR DE IMÓVEIS 9000\n\n");
-        puts("      Digite o número da opção para acessar as funções.\n");
-        puts("  1. Cadastrar imóvel.");
-        puts("  2. Consultar todos os imóveis disponíveis.");
-        puts("  3. Buscar imóveis.");
-        puts("  4. Editar lista de imóveis.");
+        puts("      SISTEMA GERENCIADOR DE IMÃ“VEIS 9000\n\n");
+        puts("      Digite o nÃºmero da opÃ§Ã£o para acessar as funÃ§Ãµes.\n");
+        puts("  1. Cadastrar imÃ³vel.");
+        puts("  2. Consultar todos os imÃ³veis disponÃ­veis.");
+        puts("  3. Buscar imÃ³veis.");
+        puts("  4. Editar lista de imÃ³veis.");
         puts("  5. Sair do programa.");
 
         scanf("%d", &opcao);
 
         switch(opcao){
             case 1:
-                //função de cadastramento
+                //funÃ§Ã£o de cadastramento
                     break;
             case 2:
-                //função de consulta de todos
+                //funÃ§Ã£o de consulta de todos
                     break;
             case 3:
-                //menu de busca (título, bairro, valor, para vender, para alugar)
+                //menu de busca (tÃ­tulo, bairro, valor, para vender, para alugar)
                     break;
             case 4:
-                //menu de edição (remoção, editar)
+                //menu de ediÃ§Ã£o (remoÃ§Ã£o, editar)
                     break;
             case 5:
                     break;
         }
 
-    }while(opcao >= 5);
+    }while(opcao < 5);
 
 
     return 0;
