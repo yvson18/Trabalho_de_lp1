@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <locale.h>
 #define TM 100
 #define QNT 50
 
@@ -42,7 +44,7 @@ typedef struct{
     float valorCond;
     int vaga;
     t_Endereco endereco;
-    int ultimo;
+
 
 }t_Apartameno;
 
@@ -53,7 +55,7 @@ typedef struct{
     char dispo[TM];
     float area;
     t_Endereco endereco;
-    int ultimo;
+
 }t_Terreno;
 
 //----------------------------------------------
@@ -61,35 +63,107 @@ typedef struct{
 //usuario quer cadastrar e deve ser chamada no menu
 
 
-void CadastrarCasa(t_Casa listCasas[],int qcad){
+void CadastrarApartamento(t_Apartameno listApartamenots[],int qcad){
 
     int i,k;
 
+// ---------- Procura em todo o array por 'Removido' e sobrescreve informacao
+        for(i = 0; (i < QNT); i++){
 
+            if(!(strcmp(listApartamenots[i].anuncio,"Removido"))){
 
-    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista teste de casas.txt","r");
+                        // decrementa caso ache removido na estrutura
+                        --qcad ;
+                 printf("Estou em removido\n\n"); // pode apagar dps isso aqui é uma flag
+                 gets(listApartamenots[i].anuncio);
+                 printf("Digite o valor do apartamento: ");
+                 scanf("%f%*c",&listApartamenots[i].valor);
+                 printf("Digite a disponibilidade do apartamento: ");
+                 gets(listApartamenots[i].dispo);
+                 printf("Digite a quantidade de quartos: ");
+                 scanf("%d%*c",&listApartamenots[i].quartos);
+                 printf("Digite a posicao do apartamento: ");
+                 gets(listApartamenots[i].posicao);
+                 printf("Digite a quantidade de andares: ");
+                 gets(listApartamenots[i].andar);
+                 printf("Digite o valor do condominio: ");
+                 scanf("%f%*c",&listApartamenots[i].valorCond);
+                 printf("Digite a quantidade de vagas de garagem: ");
+                 scanf("%d%*c",&listApartamenots[i].vaga);
+                 printf("Digite a rua do apartamento: ");
+                 gets(listApartamenots[i].endereco.rua);
+                 printf("Digite o numero do apartamento: ");
+                 gets(listApartamenots[i].endereco.numero);
+                 printf("Digite o bairro do apartamento: ");
+                 gets(listApartamenots[i].endereco.bairro);
+                 printf("Digite o CEP do apartamento: ");
+                 gets(listApartamenots[i].endereco.CEP);
+                 printf("Digite a Cidade do apartamento: ");
+                 gets(listApartamenots[i].endereco.cidade);
+                 system("cls");
 
-
-        for(int l = 0; l < QNT ; l++){
-
-                fscanf(fp,"%[^\n]\n",listCasas[l].anuncio);
-                fscanf(fp,"%f\n",&listCasas[l].valorcasa);
-                fscanf(fp,"%[^\n]\n",listCasas[l].dispo);
-                fscanf(fp,"%d\n",&listCasas[l].pavimentos);
-                fscanf(fp,"%d\n",&listCasas[l].quartos);
-                fscanf(fp,"%f\n",&listCasas[l].areaTerren);
-                fscanf(fp,"%f\n",&listCasas[l].areaConstr);
-                fscanf(fp,"%[^\n]\n",listCasas[l].endereco.rua);
-                fscanf(fp,"%[^\n]\n",listCasas[l].endereco.numero);
-                fscanf(fp,"%[^\n]\n",listCasas[l].endereco.bairro);
-                fscanf(fp,"%[^\n]\n",listCasas[l].endereco.CEP);
-                fscanf(fp,"%[^\n]\n",listCasas[l].endereco.cidade);
-
+                        system("cls");
 
         }
 
+    }
+
+// ------------- Escreve as informacoes qcad vezes ( caso n se ache removido la em cima ele executa de boas qcad vezes)
+//(caso tenha se achado la em cima ele so executa se sobrou alguma casa para cadastrar)
 
 
+        if(qcad != 0){
+
+            for(k = 0; k < QNT; k++){
+
+                        if(!(strcmp(listApartamenots[k].anuncio,""))){
+                            break;
+
+                        }
+                    }
+
+             int b = k; // gambiarra mas deixa ae se n da merda
+
+
+                    for(k; k < b+qcad ; k++){
+
+                 printf("Estou em fim da estrutura\n\n");// pode apagar dps isso aqui é uma flag
+                 printf("Digite o tiulo do anucio do Apartamento: ");
+                 gets(listApartamenots[k].anuncio);
+                 printf("Digite o valor do apartamento: ");
+                 scanf("%f%*c",&listApartamenots[k].valor);
+                 printf("Digite a disponibilidade do apartamento: ");
+                 gets(listApartamenots[k].dispo);
+                 printf("Digite a quantidade de quartos: ");
+                 scanf("%d%*c",&listApartamenots[k].quartos);
+                 printf("Digite a posicao do apartamento: ");
+                 gets(listApartamenots[k].posicao);
+                 printf("Digite a quantidade de andares: ");
+                 gets(listApartamenots[k].andar);
+                 printf("Digite o valor do condominio: ");
+                 scanf("%f%*c",&listApartamenots[k].valorCond);
+                 printf("Digite a quantidade de vagas de garagem: ");
+                 scanf("%d%*c",&listApartamenots[k].vaga);
+                 printf("Digite a rua do apartamento: ");
+                 gets(listApartamenots[k].endereco.rua);
+                 printf("Digite o numero do apartamento: ");
+                 gets(listApartamenots[k].endereco.numero);
+                 printf("Digite o bairro do apartamento: ");
+                 gets(listApartamenots[k].endereco.bairro);
+                 printf("Digite o CEP do apartamento: ");
+                 gets(listApartamenots[k].endereco.CEP);
+                 printf("Digite a Cidade do apartamento: ");
+                 gets(listApartamenots[k].endereco.cidade);
+                 system("cls");
+
+                }
+        }
+
+}
+
+void CadastrarCasa(t_Casa listCasas[],int qcad){
+
+    int i,k;
 
 // ---------- Procura em todo o array por 'Removido' e sobrescreve informacao
         for(i = 0; (i < QNT); i++){
@@ -123,7 +197,7 @@ void CadastrarCasa(t_Casa listCasas[],int qcad){
                         gets((listCasas + i)->endereco.CEP);
                         printf("Digite a cidade: ");
                         gets((listCasas + i)->endereco.cidade);
-
+                        system("cls");
 
         }
 
@@ -173,11 +247,92 @@ void CadastrarCasa(t_Casa listCasas[],int qcad){
                             gets((listCasas + k)->endereco.CEP);
                             printf("Digite a cidade: ");
                             gets((listCasas + k)->endereco.cidade);
-
+                            system("cls");
 
                 }
         }
 
+}
+
+void CadastarTerreno(t_Terreno listTerr[],int qcad){
+
+   int i,k;
+
+// ---------- Procura em todo o array por 'Removido' e sobrescreve informacao
+        for(i = 0; (i < QNT); i++){
+
+            if(!(strcmp(listTerr[i].anuncio,"Removido"))){
+
+                        // decrementa caso ache removido na estrutura
+                        --qcad ;
+                        printf("Digite o titulo do anuncio do terreno: ");
+                        gets((listTerr + i)->anuncio);
+                        printf("Digite o valor do terreno: ");
+                        scanf("%f%*c",&(listTerr + i)->valor);
+                        printf("Digite a disponibilidade do terreno: ");
+                        gets((listTerr + i)->dispo);
+                        printf("Digite o valor da area do terreno: ");
+                        scanf("%f%*c",&(listTerr + i)->area);
+                        printf("Digite o nome da rua: ");
+                        gets((listTerr + i)->endereco.rua);
+                        printf("Digite o numero do terreno: ");
+                        gets((listTerr + i)->endereco.numero);
+                        printf("Digite o Bairro do terreno: ");
+                        gets((listTerr + i)->endereco.bairro);
+                        printf("Digite o CEP do terreno: ");
+                        gets((listTerr + i)->endereco.CEP);
+                        printf("Digite a Cidade do terreno: ");
+                        gets((listTerr + i)->endereco.cidade);
+                        system("cls");
+
+        }
+
+    }
+
+// ------------- Escreve as informacoes qcad vezes ( caso n se ache removido la em cima ele executa de boas qcad vezes)
+//(caso tenha se achado la em cima ele so executa se sobrou alguma casa para cadastrar)
+
+
+        if(qcad != 0){
+
+            for(k = 0; k < QNT; k++){
+
+                        if(!(strcmp(listTerr[k].anuncio,""))){
+                            break;
+
+                        }
+                    }
+
+             int b = k; // gambiarra mas deixa ae se n da merda
+
+
+                    for(k; k < b+qcad ; k++){
+
+                        printf("Estou em fim da estrutura\n\n");// pode apagar dps isso aqui é uma flag
+                        printf("Digite o titulo do anuncio do terreno: ");
+                        gets((listTerr + k)->anuncio);
+                        printf("Digite o valor do terreno: ");
+                        scanf("%f%*c",&(listTerr + k)->valor);
+                        printf("Digite a disponibilidade do terreno: ");
+                        gets((listTerr + k)->dispo);
+                        printf("Digite o valor da area do terreno: ");
+                        scanf("%f%*c",&(listTerr + k)->area);
+                        printf("Digite o nome da rua: ");
+                        gets((listTerr + k)->endereco.rua);
+                        printf("Digite o numero do terreno: ");
+                        gets((listTerr + k)->endereco.numero);
+                        printf("Digite o Bairro do terreno: ");
+                        gets((listTerr + k)->endereco.bairro);
+                        printf("Digite o CEP do terreno: ");
+                        gets((listTerr + k)->endereco.CEP);
+                        printf("Digite a Cidade do terreno: ");
+                        gets((listTerr + k)->endereco.cidade);
+                        system("cls");
+
+                }
+        }
+
+    system("pause");
 }
 
 void CarregaDadosCasas(t_Casa listCasas[]){
@@ -444,18 +599,291 @@ void consultaImovelAlugar(t_Casa listCasas[],t_Apartameno listApartamenots[],t_T
         }
 }
 
+void ExibeCasa(t_Casa listCasas[]){
+
+int i,k;
+
+            for(k = 0; k < QNT; k++){
+
+                if(!(strcmp(listCasas[k].anuncio,""))){
+                    break;
+                }
+            }
+
+
+            for(i = 0; i < (k+1); i++){
+
+
+                  if((strcmp(listCasas[i].anuncio,"Removido")) != 0 && (strcmp(listCasas[i].anuncio,"")) != 0){
+
+                    printf("Titulo anuncio: %s\n",listCasas[i].anuncio);
+                    printf("Valor da Casa: %f\n",listCasas[i].valorcasa);
+                    printf("Disponibilidade do Imovel: %s\n",listCasas[i].dispo);
+                    printf("Quantidade de pavimentos: %d\n",listCasas[i].pavimentos);
+                    printf("Quantidade de quartos: %d\n",listCasas[i].quartos);
+                    printf("Area do terreno: %f\n",listCasas[i].areaTerren);
+                    printf("Area construida do terreno: %f\n",listCasas[i].areaConstr);
+                    printf("Logradouro: %s\n",listCasas[i].endereco.rua);
+                    printf("Bairro: %s\n",listCasas[i].endereco.bairro);
+                    printf("CEP: %s\n",listCasas[i].endereco.CEP);
+                    printf("Cidade: %s\n",listCasas[i].endereco.cidade);
+                }
+            }
+}
+void ExibeApartamento(t_Apartameno listApartamenots[]){
+
+    int i,k;
+
+            for(k = 0; k < QNT; k++){
+
+                if(!(strcmp(listApartamenots[k].anuncio,""))){
+                    break;
+                }
+            }
+
+            for(i = 0; i < (k); i++){
+
+                if((strcmp(listApartamenots[i].anuncio,"Removido")) && (strcmp(listApartamenots[i].anuncio,""))){
+
+                  printf("Titulo do Anuncio: %s\n",listApartamenots[i].anuncio);
+                  printf("Valor do Apartamento: %f\n",listApartamenots[i].valor);
+                  printf("Dislponibilidade do Imovel: %s\n",listApartamenots[i].dispo);
+                  printf("Quantidade de quartos %d\n",listApartamenots[i].quartos);
+                  printf("Poiscao do Apartamento: %s\n",listApartamenots[i].posicao);
+                  printf("Qunatidade de Andares: %s\n",listApartamenots[i].andar);
+                  printf("Valor do Condominio: %f\n",listApartamenots[i].valorCond);
+                  printf("Quantidade de vagas: %d\n",listApartamenots[i].vaga);
+                  printf("Rua do Apartamento: %s\n",listApartamenots[i].endereco.rua);
+                  printf("Numeto do Apartamento: %s\n",listApartamenots[i].endereco.numero);
+                  printf("Bairro do Apartamento: %s\n",listApartamenots[i].endereco.bairro);
+                  printf("CEP: %s\n",listApartamenots[i].endereco.CEP);
+                  printf("Cidade: %s\n",listApartamenots[i].endereco.cidade);
+
+                }
+            }
+
+}
+void ExibeTerreno(t_Terreno listTerr[]){
+
+    int i,k;
+              printf("Estou aqui 1");
+            for(k = 0; k < QNT; k++){
+
+                if(!(strcmp(listTerr[k].anuncio,""))){
+
+                    break;
+
+                }
+            }
+
+            for(i = 0; i < (k+1); i++){
+
+
+
+            if((strcmp(listTerr[i].anuncio,"Removido")) != 0 && (strcmp(listTerr[i].anuncio,"")) != 0){
+
+                  printf("Titulo do Anuncio: %s\n",listTerr[i].anuncio);
+                  printf("Valor do Terreno: %f\n",listTerr[i].valor);
+                  printf("Dislponibilidade do Imovel: %s\n",listTerr[i].dispo);
+                  printf("Area do terreno: %f\n",listTerr[i].area);
+                  printf("Rua do Terreno: %s\n",listTerr[i].endereco.rua);
+                  printf("Numeto do Terreno: %s\n",listTerr[i].endereco.numero);
+                  printf("Bairro do Terreno: %s\n",listTerr[i].endereco.bairro);
+                  printf("CEP: %s\n",listTerr[i].endereco.CEP);
+                  printf("Cidade: %s\n",listTerr[i].endereco.cidade);
+
+                }
+        }
+}
+
+
 int main(){
+
+    setlocale(LC_ALL, "Portuguese");
 
     t_Casa Casas[QNT];
     t_Apartameno Apartamentos[QNT];
     t_Terreno Terrenos[QNT];
-    int qcad = 2;
+    int qcad,op,sair = 0,sair2 = 0,opCadastro,opExibir,opConsulta;
+
+
+         do{
+        system("color 02");
+
+        puts("      SISTEMA GERENCIADOR DE IMÓVEIS 9000\n\n");
+        puts("      Digite o número da opção para acessar as funções.\n");
+        puts("  1. Cadastrar imóvel.");
+        puts("  2. Exibir Imoveis.");
+        puts("  3. Consulta Imoveis Disponiveis.");
+        puts("  4. Buscar imóveis.");
+        puts("  5. Editar lista de imóveis.");
+        puts("  6. Sair do programa.");
+
+        scanf("%d%*c",&op);
+        system("cls");
+
+                    switch (op){
+//------------------ Cadastro dos Imoveis ------------------------
+                    case 1:
+
+             puts("  Digite o numero respectivo para escolher a opção de cadastro .\n\n");
+             puts("   1.Cadastrar Casas.");
+             puts("   2.Cadastrar Apartamentos.");
+             puts("   3.Cadastrar Terrenos.\n");
+
+             scanf("%d%*c",&opCadastro);
+             system("cls");
+
+                    switch (opCadastro){
+
+
+                            case 1:
+                            printf("Digite a quantidade de casas que deseja cadastrar. ");
+                            scanf("%d%*c",&qcad);
+                            CadastrarCasa(Casas,qcad);
+                            system("cls");
+                            break;
+
+                            case 2:
+                            printf("Digite a quantidade de apartamentos que deseja cadastrar. ");
+                            scanf("%d%*c",&qcad);
+                            CadastrarApartamento(Apartamentos,qcad);
+                            system("cls");
+                            break;
+
+                            case 3:
+                            printf("Digite a quantidade de terrenos que deseja cadastrar. ");
+                            scanf("%d%*c",&qcad);
+                            CadastarTerreno(Terrenos,qcad);
+                            system("cls");
+                            break;
+
+                    }
+
+                    break;
+//------------------------Exibiçãos dos Imoveis ---------------------------------
+
+                    case 2:
+
+                   puts("  Digite um numero para a respectiva exibição. ");
+                   puts("  1. Para exibir apenas casas.");
+                   puts("  2. Para exibir apenas apartamentos.");
+                   puts("  3. Para exibir apenas terrenos.");
+                   puts("  4. Para exibir todos os Imóveis.");
+                   scanf("%d%*c",&opExibir);
+                   system("cls");
+
+
+                            switch(opExibir){
+
+                                case 1:
+                                    ExibeCasa(Casas);
+                                    system("pause");
+                                    system("cls");
+                                break;
+
+                                case 2:
+                                    ExibeApartamento(Apartamentos);
+                                    system("pause");
+                                    system("cls");
+                                break;
+
+                                case 3:
+                                     ExibeTerreno(Terrenos);
+                                     system("pause");
+                                     system("cls");
+                                break;
+
+                                case 4:
+                                    printf("--- Casas ---\n");
+                                    ExibeCasa(Casas);
+                                    printf("\n");
+                                    printf("--- Apartamentos ---\n");
+                                    ExibeApartamento(Apartamentos);
+                                    printf("--- Terrenos ---\n");
+                                    printf("\n");
+                                    ExibeTerreno(Terrenos);
+                                    system("pause");
+                                    system("cls");
+                                 break;
+
+                            }
+
+                break;
+// ----------------------   Consulta Imoveis Disponiveis -------------------------------------
+
+                    case 3:
+                   puts("   Digite um numero para escolher o tipo de exibição. ");
+                   puts("   1. Para exibir todos os imoveis disponiveis. ");
+                   puts("   2. Para exibir todos disponiveis para vender");
+                   puts("   3. Para exibir todo disponiveis para alugar");
+
+                   scanf("%d%*c",&opConsulta);
+                   system("cls");
+
+
+                    switch(opConsulta){
+
+
+                            case 1:
+
+                            consultaImovelDispo(Casas,Apartamentos,Terrenos);
+                            system("pause");
+                            system("cls");
+                            break;
+
+                            case 2:
+
+                            consultaImovelAvenda(Casas,Apartamentos,Terrenos);
+                            system("pause");
+                            system("cls");
+
+                            break;
+
+                            case 3:
+
+                            consultaImovelAlugar(Casas,Apartamentos,Terrenos);
+                            system("pause");
+                            system("cls");
+
+                            break;
+
+                 }
+
+
+//-------------------------------------------------------------------------------------------
+                    break;
+                    case 4:
+
+                    break;
+                    case 5:
+                    sair = 1;
+                    break;
+
+
+                    }
+
+
+
+}while(!sair);
+
 
 //----- Funcoes de cadastro ------
 
-   CadastrarCasa(Casas,qcad);
+
+//
+//
+//
+
 
 //................................
+
+//--------- Funcao de exibicao ----------
+
+//
+//
+//
+
 
 //----- Funcoes de Carregamento -------  // provavelmente isso vai sair
 
@@ -475,7 +903,7 @@ int main(){
 //      consultaImovelDispo(Casas,Apartamentos,Terrenos);
 //....................................
 
-    printf("%s",Casas[0].anuncio);
+
 
 
 return 0;
