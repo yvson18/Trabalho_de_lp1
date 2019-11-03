@@ -160,7 +160,6 @@ void CadastrarApartamento(t_Apartameno listApartamenots[],int qcad){
         }
 
 }
-
 void CadastrarCasa(t_Casa listCasas[],int qcad){
 
     int i,k;
@@ -253,7 +252,6 @@ void CadastrarCasa(t_Casa listCasas[],int qcad){
         }
 
 }
-
 void CadastarTerreno(t_Terreno listTerr[],int qcad){
 
    int i,k;
@@ -334,86 +332,6 @@ void CadastarTerreno(t_Terreno listTerr[],int qcad){
 
     system("pause");
 }
-
-void CarregaDadosCasas(t_Casa listCasas[]){
-
-    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de casas.txt","r");
-    int i = 0;
-
-        if(fp==NULL){
-            printf("Erro ao abrir o arquivo\n");
-        }
-
-        for(i = 0; i < QNT ; i++){
-
-                fscanf(fp,"%[^\n]\n",listCasas[i].anuncio);
-                fscanf(fp,"%f\n",&listCasas[i].valorcasa);
-                fscanf(fp,"%[^\n]\n",listCasas[i].dispo);
-                fscanf(fp,"%d\n",&listCasas[i].pavimentos);
-                fscanf(fp,"%d\n",&listCasas[i].quartos);
-                fscanf(fp,"%f\n",&listCasas[i].areaTerren);
-                fscanf(fp,"%f\n",&listCasas[i].areaConstr);
-                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.rua);
-                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.numero);
-                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.bairro);
-                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.CEP);
-                fscanf(fp,"%[^\n]\n",listCasas[i].endereco.cidade);
-
-
-        }
-
-     fclose(fp);
-}
-void CarregaDadosApartamento(t_Apartameno listApartamenots[]){
-
-     FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de apartamentos.txt","r");
-     int i = 0;
-
-        if(fp==NULL){
-            printf("Erro ao abrir o arquivo\n");
-        }
-
-            for(i = 0; i < QNT; i++){
-
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].anuncio);
-                fscanf(fp,"%f\n",&listApartamenots[i].valor);
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].dispo);
-                fscanf(fp,"%d\n",&listApartamenots[i].quartos);
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].posicao);
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].andar);
-                fscanf(fp,"%f\n",&listApartamenots[i].valorCond);
-                fscanf(fp,"%d\n",&listApartamenots[i].vaga);
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.rua);
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.numero);
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.bairro);
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.CEP);
-                fscanf(fp,"%[^\n]\n",listApartamenots[i].endereco.cidade);
-
-            }
-      fclose(fp);
-}
-
-void CarregaDadosTerrenos(t_Terreno listTerrenos[]){
-
-
-    FILE *fp = fopen("C:\\Users\\yvson\\Documents\\Reaprendendo a voar em c\\Doc_de_texto\\Lista de terrenos.txt","r");
-    int i = 0;
-
-       for(i = 0; i < 2; i++){
-
-                fscanf(fp,"%[^\n]\n",listTerrenos[i].anuncio);
-                fscanf(fp,"%f\n",&listTerrenos[i].valor);
-                fscanf(fp,"%[^\n]\n",listTerrenos[i].dispo);
-                fscanf(fp,"%f\n",&listTerrenos[i].area);
-                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.rua);
-                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.numero);
-                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.bairro);
-                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.CEP);
-                fscanf(fp,"%[^\n]\n",listTerrenos[i].endereco.cidade);
-        }
-
-}
-
 void BuscaImovelAnuncio(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerrenos[]){
 
         char Anuncio[TM];
@@ -442,9 +360,6 @@ void BuscaImovelAnuncio(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Ter
 
               }
 }
-
-
-
 void BuscaImovelBairro(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerrenos[]){
 
         char Bairro[TM];
@@ -473,7 +388,6 @@ void BuscaImovelBairro(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terr
 
               }
 }
-
 void BuscaImovelValor(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerrenos[]){
 
       float valor;
@@ -508,7 +422,6 @@ void BuscaImovelValor(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terre
         }
 
 }
-
 void consultaImovelDispo(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerrenos[]){
 
     for(int i = 0; i < QNT; i++){
@@ -538,7 +451,6 @@ void consultaImovelDispo(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Te
             }
         }
 }
-
 void consultaImovelAvenda(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerrenos[]){
 
     for(int i = 0; i < QNT; i++){
@@ -568,7 +480,6 @@ void consultaImovelAvenda(t_Casa listCasas[],t_Apartameno listApartamenots[],t_T
             }
         }
 }
-
 void consultaImovelAlugar(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerrenos[]){
 
     for(int i = 0; i < QNT; i++){
@@ -598,7 +509,6 @@ void consultaImovelAlugar(t_Casa listCasas[],t_Apartameno listApartamenots[],t_T
             }
         }
 }
-
 void ExibeCasa(t_Casa listCasas[]){
 
 int i,k;
@@ -727,7 +637,6 @@ void RemoverImovel(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno 
 
 
 }
-
 void EditarImovel(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerr[]){
 
         char Anuncio[TM],opcao[TM];
@@ -945,6 +854,220 @@ void EditarImovel(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno l
     }
 
 }
+void SalvarDados(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerr[]){
+
+        FILE *Casa = fopen("Arquivo_Casa.txt","w");
+        int c,a,t,aux;
+
+                for(c = 0; c < QNT; c++){
+
+                        if(!(strcmp(listCasas[c].anuncio,""))){
+                            break;
+
+                        }
+                    }
+                aux = c  ;
+
+
+                for(c = 0; c < aux; c++){
+
+
+                 if((strcmp(listCasas[c].anuncio,"Removido") != 0) && (strcmp(listCasas[c].anuncio,"") != 0)){
+
+                    fprintf(Casa,"%s\n",(listCasas + c)->anuncio);
+                    fprintf(Casa,"%.1f\n",(listCasas + c)->valorcasa);
+                    fprintf(Casa,"%s\n",(listCasas + c)->dispo);
+                    fprintf(Casa,"%d\n",(listCasas + c)->pavimentos);
+                    fprintf(Casa,"%d\n",(listCasas + c)->quartos);
+                    fprintf(Casa,"%.1f\n",(listCasas + c)->areaTerren);
+                    fprintf(Casa,"%.1f\n",(listCasas + c)->areaConstr);
+                    fprintf(Casa,"%s\n",(listCasas + c)->endereco.rua);
+                    fprintf(Casa,"%s\n",(listCasas + c)->endereco.numero);
+                    fprintf(Casa,"%s\n",(listCasas + c)->endereco.bairro);
+                    fprintf(Casa,"%s\n",(listCasas + c)->endereco.CEP);
+                    fprintf(Casa,"%s\n",(listCasas + c)->endereco.cidade);
+
+                 }
+
+            }
+        fclose(Casa);
+
+
+                FILE *Apart = fopen("Arquivo_Apartamento.txt","w");
+
+
+                    for(a = 0; a < QNT; a++){
+
+                            if(!(strcmp(listApartamenots[a].anuncio,""))){
+                                break;
+
+                            }
+                        }
+                    aux = a;
+
+
+                    for(a = 0; a < aux; a++){
+
+                    if((strcmp(listApartamenots[a].anuncio,"Removido") != 0) && (strcmp(listApartamenots[a].anuncio,"") != 0)){
+                         fprintf(Apart,"%s\n",listApartamenots[a].anuncio);
+                         fprintf(Apart,"%f\n",listApartamenots[a].valor);
+                         fprintf(Apart,"%s\n",listApartamenots[a].dispo);
+                         fprintf(Apart,"%d\n",listApartamenots[a].quartos);
+                         fprintf(Apart,"%s\n",listApartamenots[a].posicao);
+                         fprintf(Apart,"%s\n",listApartamenots[a].andar);
+                         fprintf(Apart,"%f\n",listApartamenots[a].valorCond);
+                         fprintf(Apart,"%d\n",listApartamenots[a].vaga);
+                         fprintf(Apart,"%s\n",listApartamenots[a].endereco.rua);
+                         fprintf(Apart,"%s\n",listApartamenots[a].endereco.numero);
+                         fprintf(Apart,"%s\n",listApartamenots[a].endereco.bairro);
+                         fprintf(Apart,"%s\n",listApartamenots[a].endereco.CEP);
+                         fprintf(Apart,"%s\n",listApartamenots[a].endereco.cidade);
+
+                    }
+
+                }
+
+             fclose(Apart);
+
+
+                  FILE *Terr = fopen("Arquivo_Terreno.txt","w");
+
+
+                    for(t = 0; t < QNT; t++){
+
+                        if(!(strcmp(listTerr[t].anuncio,""))){
+                            break;
+
+                        }
+                    }
+
+
+                    aux = t;
+
+
+                    for(t = 0; t < aux; t++){
+
+                        if((strcmp(listTerr[t].anuncio,"Removido") != 0) && (strcmp(listTerr[t].anuncio,"") != 0))
+                        fprintf(Terr,"%s\n",(listTerr + t)->anuncio);
+                        fprintf(Terr,"%.1f\n",(listTerr + t)->valor);
+                        fprintf(Terr,"%s\n",(listTerr + t)->dispo);
+                        fprintf(Terr,"%.1f\n",(listTerr + t)->area);
+                        fprintf(Terr,"%s\n",(listTerr + t)->endereco.rua);
+                        fprintf(Terr,"%s\n",(listTerr + t)->endereco.numero);
+                        fprintf(Terr,"%s\n",(listTerr + t)->endereco.bairro);
+                        fprintf(Terr,"%s\n",(listTerr + t)->endereco.CEP);
+                        fprintf(Terr,"%s\n",(listTerr + t)->endereco.cidade);
+
+                    }
+                fclose(Terr);
+
+}
+void lerDados(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerr[]){
+
+FILE *Casa = fopen("Arquivo_Casa.txt","r+");
+        int c,a,t,aux;
+
+                for(c = 0; c < QNT; c++){
+
+                        if(!(strcmp(listCasas[c].anuncio,""))){
+                            break;
+
+                        }
+                    }
+                aux = c  ;
+
+
+                for(c = 0; c < aux; c++){
+
+                fscanf(Casa,"%[^\n]\n",listCasas[c].anuncio);
+                fscanf(Casa,"%f\n",&listCasas[c].valorcasa);
+                fscanf(Casa,"%[^\n]\n",listCasas[c].dispo);
+                fscanf(Casa,"%d\n",&listCasas[c].pavimentos);
+                fscanf(Casa,"%d\n",&listCasas[c].quartos);
+                fscanf(Casa,"%f\n",&listCasas[c].areaTerren);
+                fscanf(Casa,"%f\n",&listCasas[c].areaConstr);
+                fscanf(Casa,"%[^\n]\n",listCasas[c].endereco.rua);
+                fscanf(Casa,"%[^\n]\n",listCasas[c].endereco.numero);
+                fscanf(Casa,"%[^\n]\n",listCasas[c].endereco.bairro);
+                fscanf(Casa,"%[^\n]\n",listCasas[c].endereco.CEP);
+                fscanf(Casa,"%[^\n]\n",listCasas[c].endereco.cidade);
+
+
+                 }
+
+
+        fclose(Casa);
+
+
+                FILE *Apart = fopen("Arquivo_Apartamento.txt","r+");
+
+
+                    for(a = 0; a < QNT; a++){
+
+                            if(!(strcmp(listApartamenots[a].anuncio,""))){
+                                break;
+
+                            }
+                        }
+                    aux = a+1;
+
+
+                    for(a = 0; a < aux; a++){
+
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].anuncio);
+                        fscanf(Apart,"%f\n",&listApartamenots[a].valor);
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].dispo);
+                        fscanf(Apart,"%d\n",&listApartamenots[a].quartos);
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].posicao);
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].andar);
+                        fscanf(Apart,"%f\n",&listApartamenots[a].valorCond);
+                        fscanf(Apart,"%d\n",&listApartamenots[a].vaga);
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].endereco.rua);
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].endereco.numero);
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].endereco.bairro);
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].endereco.CEP);
+                        fscanf(Apart,"%[^\n]\n",listApartamenots[a].endereco.cidade);
+
+                    }
+
+
+
+             fclose(Apart);
+
+
+                  FILE *Terr = fopen("Arquivo_Terreno.txt","r+");
+
+
+                    for(t = 0; t < QNT; t++){
+
+                        if(!(strcmp(listTerr[t].anuncio,""))){
+                            break;
+
+                        }
+                    }
+
+
+                    aux = t+1;
+
+
+            for(t = 0; t < aux; t++){
+
+
+                fscanf(Terr,"%[^\n]\n",listTerr[t].anuncio);
+                fscanf(Terr,"%f\n",&listTerr[t].valor);
+                fscanf(Terr,"%[^\n]\n",listTerr[t].dispo);
+                fscanf(Terr,"%f\n",&listTerr[t].area);
+                fscanf(Terr,"%[^\n]\n",listTerr[t].endereco.rua);
+                fscanf(Terr,"%[^\n]\n",listTerr[t].endereco.numero);
+                fscanf(Terr,"%[^\n]\n",listTerr[t].endereco.bairro);
+                fscanf(Terr,"%[^\n]\n",listTerr[t].endereco.CEP);
+                fscanf(Terr,"%[^\n]\n",listTerr[t].endereco.cidade);
+
+            }
+
+ fclose(Terr);
+
+}
 
 int main(){
 
@@ -954,7 +1077,7 @@ int main(){
     t_Apartameno Apartamentos[QNT];
     t_Terreno Terrenos[QNT];
     int qcad,op,sair = 0,sair2 = 0,opCadastro,opExibir,opConsulta,opBusca;
-
+    lerDados(Casas,Apartamentos,Terrenos);
 
          do{
         system("color 02");
@@ -967,7 +1090,9 @@ int main(){
         puts("  4. Buscar imóveis.");
         puts("  5. Remover imóveis.");
         puts("  6. Editar lista de imóveis.");
-        puts("  7. Sair do programa.");
+        puts("  7. Carregar Dados.");
+        puts("  8. Salvar.");
+        puts("  9. Sair.");
 
         scanf("%d%*c",&op);
         system("cls");
@@ -1158,24 +1283,24 @@ int main(){
                     system("cls");
                     break;
                     case 7:
+                    lerDados(Casas,Apartamentos,Terrenos);
+
+                    break;
+                    case 8:
+//-----------------------Salvar -----------------------------
+                    SalvarDados(Casas,Apartamentos,Terrenos);
+
+                    break;
+                    case 9:
+
                     sair = 1;
                     break;
-
 
                     }
 
 
 
 }while(!sair);
-
-
-//----- Funcoes de Carregamento -------  // provavelmente isso vai sair
-
-    // CarregaDadosCasas(Casas);
-    // CarregaDadosApartamento(Apartamentos);
-     //CarregaDadosTerrenos(Terrenos);
-
-
 
 
 return 0;
