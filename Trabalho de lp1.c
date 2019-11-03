@@ -458,15 +458,15 @@ void BuscaImovelBairro(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terr
 
 
                          if(!(strcmp(Bairro,listApartamenots[j].endereco.bairro))){
-                            printf("%s\n",listApartamenots[j].endereco.bairro);
+                            printf("%s\n",listApartamenots[j].anuncio);
                             break;
                         }
                         if(!(strcmp(Bairro,listCasas[j].endereco.bairro))){
-                            printf("%s\n",listCasas[j].endereco.bairro);
+                            printf("%s\n",listCasas[j].anuncio);
                             break;
                         }
                         if(!(strcmp(Bairro,listTerrenos[j].endereco.bairro))){
-                            printf("%s\n",listTerrenos[j].endereco.bairro);
+                            printf("%s\n",listTerrenos[j].anuncio);
                             break;
 
                         }
@@ -695,7 +695,256 @@ void ExibeTerreno(t_Terreno listTerr[]){
                 }
         }
 }
+void RemoverImovel(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerrenos[]){
 
+        char Anuncio[TM];
+        int j;
+
+
+                    printf("Digite o anuncio que deseja remover: ");
+                    gets(Anuncio);
+
+
+                      for(j = 0; j < QNT; j++){
+
+
+                                 if(!(strcmp(Anuncio,listApartamenots[j].anuncio))){
+                                       strcpy(listApartamenots[j].anuncio,"Removido");
+                                        break;
+                                }
+                                if(!(strcmp(Anuncio,listCasas[j].anuncio))){
+                                       strcpy(listCasas[j].anuncio,"Removido");
+                                    break;
+                                }
+                                if(!(strcmp(Anuncio,listTerrenos[j].anuncio))){
+                                       strcpy(listTerrenos[j].anuncio,"Removido");
+                                    break;
+
+                                }
+
+                  }
+
+
+
+}
+
+void EditarImovel(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerr[]){
+
+        char Anuncio[TM],opcao[TM];
+        int k;
+
+                    printf("Digite o Titulo do anuncio que deseja editar: ");
+                    gets(Anuncio);
+
+
+                      for(k = 0; k < QNT; k++){
+
+//-------------------------Edição dos apartamentos---------------------------------------
+                    if(!(strcmp(Anuncio,listApartamenots[k].anuncio))){
+
+                             printf(" Digite a opção que deseja modificar.\n\n");
+                             printf("Opções: <anuncio><valor><disponibilidade><quartos><posicao><andares>\n");
+                             printf("<condominio><vagas><rua><numero><numero><bairro><CEP><cidade>\n");
+                             gets(opcao);
+                             system("cls");
+
+                             if(!strcmp(opcao,"anuncio")){
+                                 printf("Digite o tiulo do anucio do Apartamento: ");
+                                 gets(listApartamenots[k].anuncio);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"valor")){
+                                 printf("Digite o valor do apartamento: ");
+                                 scanf("%f%*c",&listApartamenots[k].valor);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"disponibilidade")){
+                                 printf("Digite a disponibilidade do apartamento: ");
+                                 gets(listApartamenots[k].dispo);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"quartos")){
+                                 printf("Digite a quantidade de quartos: ");
+                                 scanf("%d%*c",&listApartamenots[k].quartos);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"posicao")){
+                                 printf("Digite a posicao do apartamento: ");
+                                 gets(listApartamenots[k].posicao);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"andares")){
+                                 printf("Digite a quantidade de andares: ");
+                                 gets(listApartamenots[k].andar);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"condominio")){
+                                 printf("Digite o valor do condominio: ");
+                                 scanf("%f%*c",&listApartamenots[k].valorCond);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"vagas")){
+                                 printf("Digite a quantidade de vagas de garagem: ");
+                                 scanf("%d%*c",&listApartamenots[k].vaga);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"rua")){
+                                 printf("Digite a rua do apartamento: ");
+                                 gets(listApartamenots[k].endereco.rua);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"numero")){
+                                 printf("Digite o numero do apartamento: ");
+                                 gets(listApartamenots[k].endereco.numero);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"bairro")){
+                                 printf("Digite o bairro do apartamento: ");
+                                 gets(listApartamenots[k].endereco.bairro);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"CEP")){
+                                 printf("Digite o CEP do apartamento: ");
+                                 gets(listApartamenots[k].endereco.CEP);
+                                 break;
+                             }
+                             if(!strcmp(opcao,"cidade")){
+                                 printf("Digite a Cidade do apartamento: ");
+                                 gets(listApartamenots[k].endereco.cidade);
+                                 break;
+                             }
+                    }
+
+//---------------------------- Edição das casas------------------------------------------
+                    if(!(strcmp(Anuncio,listCasas[k].anuncio))){
+
+                         printf("Digite a opção que deseja modificar. \n");
+                         printf("Opções: <anuncio><valor><disponibilidade><pavimentos><quartos>\n");
+                         printf("<area terreno><area construida><rua><bairro><CEP><cidade>\n");
+                         gets(opcao);
+                         system("cls");
+
+                      if(!strcmp(opcao,"anuncio")){
+                        printf("Digite o tiulo do anucio da casa: ");
+                        gets((listCasas + k)->anuncio);
+                        break;
+                      }
+                      if(!strcmp(opcao,"valor")){
+                        printf("Digite o valor da casa: ");
+                        scanf("%f%*c",&(listCasas + k)->valorcasa);
+                        break;
+                      }
+                      if(!strcmp(opcao,"disponibilidade")){
+                        printf("Digite a disponibilidade da casa: ");
+                        gets((listCasas + k)->dispo);
+                        break;
+                      }
+                      if(!strcmp(opcao,"pavimentos")){
+                        printf("Digite a quantidade de pavimentos da casa: ");
+                        scanf("%d*c",&(listCasas + k)->pavimentos);
+                        break;
+                      }
+                      if(!strcmp(opcao,"quartos")){
+                        printf("Digite a quantidade de quartos: ");
+                        scanf("%d*c",&(listCasas + k)->quartos);
+                        break;
+                      }
+                      if(!strcmp(opcao,"area terreno")){
+                        printf("Digite a Area do terreno: ");
+                        scanf("%f%*c",&(listCasas + k)->areaTerren);
+                        break;
+                      }
+                      if(!strcmp(opcao,"area construida")){
+                        printf("Digite a Area construida: ");
+                        scanf("%f%*c",&(listCasas + k)->areaConstr);
+                        break;
+                      }
+                      if(!strcmp(opcao,"rua")){
+                        printf("Digite a rua: ");
+                        gets((listCasas + k)->endereco.rua);
+                        break;
+                      }
+                      if(!strcmp(opcao,"numero")){
+                        printf("Digite o numero: ");
+                        gets((listCasas + k)->endereco.numero);
+                        break;
+                      }
+                      if(!strcmp(opcao,"bairro")){
+                        printf("Digite o bairro: ");
+                        gets((listCasas + k)->endereco.bairro);
+                        break;
+                      }
+                      if(!strcmp(opcao,"CEP")){
+                        printf("Digite o CEP: ");
+                        gets((listCasas + k)->endereco.CEP);
+                        break;
+                      }
+                      if(!strcmp(opcao,"cidade")){
+                        printf("Digite a cidade: ");
+                        gets((listCasas + k)->endereco.cidade);
+                        break;
+                      }
+
+                }
+// --------------------Edição do terreno ------------------------------------------------
+                    if(!(strcmp(Anuncio,listTerr[k].anuncio))){
+                       printf("Digite a opção que deseja modificar.\n");
+                       printf("Opções: <anuncio><valor><disponibilidade>\n<area><numero><bairro><CEP><cidade>\n\n");
+                       gets(opcao);
+                       system("cls");
+
+                    if(!strcmp(opcao,"anuncio")){
+                        printf("Digite o titulo do anuncio do terreno: ");
+                        gets((listTerr + k)->anuncio);
+                        break;
+                    }
+                    if(!strcmp(opcao,"valor")){
+                        printf("Digite o valor do terreno: ");
+                        scanf("%f%*c",&(listTerr + k)->valor);
+                        break;
+                    }
+                    if(!strcmp(opcao,"disponibilidade")){
+                        printf("Digite a disponibilidade do terreno: ");
+                        gets((listTerr + k)->dispo);
+                        break;
+                    }
+                    if(!strcmp(opcao,"area")){
+                        printf("Digite o valor da area do terreno: ");
+                        scanf("%f%*c",&(listTerr + k)->area);
+                        break;
+                    }
+                    if(!strcmp(opcao,"rua")){
+                        printf("Digite o nome da rua: ");
+                        gets((listTerr + k)->endereco.rua);
+                        break;
+                    }
+                    if(!strcmp(opcao,"numero")){
+                        printf("Digite o numero do terreno: ");
+                        gets((listTerr + k)->endereco.numero);
+                        break;
+                    }
+                    if(!strcmp(opcao,"bairro")){
+                        printf("Digite o Bairro do terreno: ");
+                        gets((listTerr + k)->endereco.bairro);
+                        break;
+                    }
+                    if(!strcmp(opcao,"CEP")){
+                        printf("Digite o CEP do terreno: ");
+                        gets((listTerr + k)->endereco.CEP);
+                        break;
+                    }
+                    if(!strcmp(opcao,"cidade")){
+                        printf("Digite a Cidade do terreno: ");
+                        gets((listTerr + k)->endereco.cidade);
+                        break;
+                    }
+
+
+               }
+
+    }
+
+}
 
 int main(){
 
@@ -704,7 +953,7 @@ int main(){
     t_Casa Casas[QNT];
     t_Apartameno Apartamentos[QNT];
     t_Terreno Terrenos[QNT];
-    int qcad,op,sair = 0,sair2 = 0,opCadastro,opExibir,opConsulta;
+    int qcad,op,sair = 0,sair2 = 0,opCadastro,opExibir,opConsulta,opBusca;
 
 
          do{
@@ -716,8 +965,9 @@ int main(){
         puts("  2. Exibir Imoveis.");
         puts("  3. Consulta Imoveis Disponiveis.");
         puts("  4. Buscar imóveis.");
-        puts("  5. Editar lista de imóveis.");
-        puts("  6. Sair do programa.");
+        puts("  5. Remover imóveis.");
+        puts("  6. Editar lista de imóveis.");
+        puts("  7. Sair do programa.");
 
         scanf("%d%*c",&op);
         system("cls");
@@ -850,13 +1100,64 @@ int main(){
 
                  }
 
-
-//-------------------------------------------------------------------------------------------
                     break;
+
+
+//----------------------Busca Imoveis----------------------------
+
                     case 4:
+                   puts("   Digite um numero para o modo de busca. ");
+                   puts("  1.Busca por titulo do Anuncio.");
+                   puts("  2.Busca por Bairro.");
+                   puts("  3.Busca por Valor.");
 
+                   scanf("%d%*c",&opBusca);
+                   system("cls");
+
+
+                        switch(opBusca){
+
+                            case 1:
+
+                            BuscaImovelAnuncio(Casas,Apartamentos,Terrenos);
+                            system("pause");
+                            system("cls");
+
+                            break;
+
+                            case 2:
+
+                            BuscaImovelBairro(Casas,Apartamentos,Terrenos);
+                            system("pause");
+                            system("cls");
+
+                            break;
+
+                            case 3:
+
+                            BuscaImovelValor(Casas,Apartamentos,Terrenos);
+                            system("pause");
+                            system("cls");
+
+                            break;
+
+
+                       }
                     break;
+
+//----------------------Remover imóveis---------------------------
                     case 5:
+                    RemoverImovel(Casas,Apartamentos,Terrenos);
+                    system("pause");
+                    system("cls");
+                    break;
+                    case 6:
+//---------------------- Editar determinado Imóvel---------------
+                    EditarImovel(Casas,Apartamentos,Terrenos);
+                    system("pause");
+                    system("cls");
+                    break;
+                    case 7:
                     sair = 1;
                     break;
 
@@ -868,40 +1169,11 @@ int main(){
 }while(!sair);
 
 
-//----- Funcoes de cadastro ------
-
-
-//
-//
-//
-
-
-//................................
-
-//--------- Funcao de exibicao ----------
-
-//
-//
-//
-
-
 //----- Funcoes de Carregamento -------  // provavelmente isso vai sair
 
     // CarregaDadosCasas(Casas);
     // CarregaDadosApartamento(Apartamentos);
      //CarregaDadosTerrenos(Terrenos);
-
-//....................................
-
-// ----- Funcoes de Busca ------------
-//      BuscaImovelAnuncio(Casas,Apartamentos,Terrenos);
-//      BuscaImovelBairro(Casas,Apartamentos,Terrenos);
-//      BuscaImovelValor(Casas,Apartamentos,Terrenos);
-//      consultaImovelDispo(Casas,Apartamentos,Terrenos);
-//      consultaImovelAvenda(Casas,Apartamentos,Terrenos);
-//      consultaImovelAlugar(Casas,Apartamentos,Terrenos);
-//      consultaImovelDispo(Casas,Apartamentos,Terrenos);
-//....................................
 
 
 
