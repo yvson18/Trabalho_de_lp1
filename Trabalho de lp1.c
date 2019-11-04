@@ -1049,7 +1049,7 @@ int main(){
     t_Terreno Terrenos[QNT];
     int qcad,op,sair,opCadastro,opExibir,opConsulta,opBusca;
     lerDados(Casas,Apartamentos,Terrenos);
-
+/*
          do{
         system("color 02");
 
@@ -1272,8 +1272,7 @@ int main(){
 
 
 }while(!sair);
-
-
+*/
 
 return 0;
 }
