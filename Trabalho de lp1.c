@@ -67,9 +67,10 @@ void CadastrarApartamento(t_Apartameno listApartamenots[],int qcad){
 
             if(!(strcmp(listApartamenots[i].anuncio,"Removido"))){
 
-                        // decrementa caso ache removido na estrutura
-                        --qcad ;
-                 printf("Estou em removido\n\n"); // pode apagar dps isso aqui é uma flag
+
+                 --qcad ;  // decrementa caso ache removido na estrutura
+                 printf("Digite o tiulo do anucio do Apartamento: ");
+                 printf("Estou em removido\n\n");
                  gets(listApartamenots[i].anuncio);
                  printf("Digite o valor do apartamento: ");
                  scanf("%f%*c",&listApartamenots[i].valor);
@@ -122,7 +123,6 @@ void CadastrarApartamento(t_Apartameno listApartamenots[],int qcad){
 
                     for(k; k < b+qcad ; k++){
 
-                 printf("Estou em fim da estrutura\n\n");// pode apagar dps isso aqui é uma flag
                  printf("Digite o tiulo do anucio do Apartamento: ");
                  gets(listApartamenots[k].anuncio);
                  printf("Digite o valor do apartamento: ");
@@ -164,9 +164,8 @@ void CadastrarCasa(t_Casa listCasas[],int qcad){
 
             if(!(strcmp(listCasas[i].anuncio,"Removido"))){
 
-                        // decrementa caso ache removido na estrutura
-                        --qcad ;
-                        printf("Estou em removido\n\n"); // pode apagar dps isso aqui é uma flag
+
+                        --qcad ; // decrementa caso ache removido na estrutura
                         printf("Digite o tiulo do anucio da casa: ");
                         gets((listCasas + i)->anuncio);
                         printf("Digite o valor da casa: ");
@@ -197,8 +196,7 @@ void CadastrarCasa(t_Casa listCasas[],int qcad){
 
     }
 
-// ------------- Escreve as informacoes qcad vezes ( caso n se ache removido la em cima ele executa de boas qcad vezes)
-//(caso tenha se achado la em cima ele so executa se sobrou alguma casa para cadastrar)
+
 
 
         if(qcad != 0){
@@ -216,7 +214,6 @@ void CadastrarCasa(t_Casa listCasas[],int qcad){
 
                     for(k; k < b+qcad ; k++){
 
-                            printf("Estou em fim da estrutura\n\n");// pode apagar dps isso aqui é uma flag
                             printf("Digite o tiulo do anucio da casa: ");
                             gets((listCasas + k)->anuncio);
                             printf("Digite o valor da casa: ");
@@ -340,15 +337,49 @@ void BuscaImovelAnuncio(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Ter
 
 
                          if(!(strcmp(Anuncio,listApartamenots[j].anuncio))){
-                            printf("%s\n",listApartamenots[j].anuncio);
+
+                              printf("Valor do Apartamento: %f\n",listApartamenots[j].valor);
+                              printf("Dislponibilidade do Imovel: %s\n",listApartamenots[j].dispo);
+                              printf("Quantidade de quartos %d\n",listApartamenots[j].quartos);
+                              printf("Poiscao do Apartamento: %s\n",listApartamenots[j].posicao);
+                              printf("Qunatidade de Andares: %s\n",listApartamenots[j].andar);
+                              printf("Valor do Condominio: %f\n",listApartamenots[j].valorCond);
+                              printf("Quantidade de vagas: %d\n",listApartamenots[j].vaga);
+                              printf("Rua do Apartamento: %s\n",listApartamenots[j].endereco.rua);
+                              printf("Numeto do Apartamento: %s\n",listApartamenots[j].endereco.numero);
+                              printf("Bairro do Apartamento: %s\n",listApartamenots[j].endereco.bairro);
+                              printf("CEP: %s\n",listApartamenots[j].endereco.CEP);
+                              printf("Cidade: %s\n",listApartamenots[j].endereco.cidade);
+
                             break;
                         }
                         if(!(strcmp(Anuncio,listCasas[j].anuncio))){
-                            printf("%s\n",listCasas[j].anuncio);
+
+                                printf("Valor da Casa: %f\n",listCasas[j].valorcasa);
+                                printf("Disponibilidade do Imovel: %s\n",listCasas[j].dispo);
+                                printf("Quantidade de pavimentos: %d\n",listCasas[j].pavimentos);
+                                printf("Quantidade de quartos: %d\n",listCasas[j].quartos);
+                                printf("Area do terreno: %f\n",listCasas[j].areaTerren);
+                                printf("Area construida do terreno: %f\n",listCasas[j].areaConstr);
+                                printf("Logradouro: %s\n",listCasas[j].endereco.rua);
+                                printf("Bairro: %s\n",listCasas[j].endereco.bairro);
+                                printf("CEP: %s\n",listCasas[j].endereco.CEP);
+                                printf("Cidade: %s\n",listCasas[j].endereco.cidade);
+
                             break;
                         }
                         if(!(strcmp(Anuncio,listTerrenos[j].anuncio))){
-                            printf("%s\n",listTerrenos[j].anuncio);
+
+                                  printf("Titulo do Anuncio: %s\n",listTerrenos[j].anuncio);
+                                  printf("Valor do Terreno: %f\n",listTerrenos[j].valor);
+                                  printf("Dislponibilidade do Imovel: %s\n",listTerrenos[j].dispo);
+                                  printf("Area do terreno: %f\n",listTerrenos[j].area);
+                                  printf("Rua do Terreno: %s\n",listTerrenos[j].endereco.rua);
+                                  printf("Numeto do Terreno: %s\n",listTerrenos[j].endereco.numero);
+                                  printf("Bairro do Terreno: %s\n",listTerrenos[j].endereco.bairro);
+                                  printf("CEP: %s\n",listTerrenos[j].endereco.CEP);
+                                  printf("Cidade: %s\n",listTerrenos[j].endereco.cidade);
+
                             break;
 
                         }
@@ -368,15 +399,49 @@ void BuscaImovelBairro(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terr
 
 
                          if(!(strcmp(Bairro,listApartamenots[j].endereco.bairro))){
-                            printf("%s\n",listApartamenots[j].anuncio);
+
+                              printf("Titulo do anuncio: %s\n",listApartamenots[j].anuncio);
+                              printf("Valor do Apartamento: %f\n",listApartamenots[j].valor);
+                              printf("Dislponibilidade do Imovel: %s\n",listApartamenots[j].dispo);
+                              printf("Quantidade de quartos %d\n",listApartamenots[j].quartos);
+                              printf("Poiscao do Apartamento: %s\n",listApartamenots[j].posicao);
+                              printf("Qunatidade de Andares: %s\n",listApartamenots[j].andar);
+                              printf("Valor do Condominio: %f\n",listApartamenots[j].valorCond);
+                              printf("Quantidade de vagas: %d\n",listApartamenots[j].vaga);
+                              printf("Rua do Apartamento: %s\n",listApartamenots[j].endereco.rua);
+                              printf("Numeto do Apartamento: %s\n",listApartamenots[j].endereco.numero);
+                              printf("CEP: %s\n",listApartamenots[j].endereco.CEP);
+                              printf("Cidade: %s\n",listApartamenots[j].endereco.cidade);
+
                             break;
                         }
                         if(!(strcmp(Bairro,listCasas[j].endereco.bairro))){
-                            printf("%s\n",listCasas[j].anuncio);
+
+                            printf("Titulo anuncio: %s\n",listCasas[j].anuncio);
+                            printf("Valor da Casa: %f\n",listCasas[j].valorcasa);
+                            printf("Disponibilidade do Imovel: %s\n",listCasas[j].dispo);
+                            printf("Quantidade de pavimentos: %d\n",listCasas[j].pavimentos);
+                            printf("Quantidade de quartos: %d\n",listCasas[j].quartos);
+                            printf("Area do terreno: %f\n",listCasas[j].areaTerren);
+                            printf("Area construida do terreno: %f\n",listCasas[j].areaConstr);
+                            printf("Logradouro: %s\n",listCasas[j].endereco.rua);
+                            printf("Bairro: %s\n",listCasas[j].endereco.bairro);
+                            printf("CEP: %s\n",listCasas[j].endereco.CEP);
+                            printf("Cidade: %s\n",listCasas[j].endereco.cidade);
                             break;
                         }
                         if(!(strcmp(Bairro,listTerrenos[j].endereco.bairro))){
-                            printf("%s\n",listTerrenos[j].anuncio);
+                                  printf("Titulo do anuncio: %s\n",listTerrenos[j].anuncio);
+                                  printf("Titulo do Anuncio: %s\n",listTerrenos[j].anuncio);
+                                  printf("Valor do Terreno: %f\n",listTerrenos[j].valor);
+                                  printf("Dislponibilidade do Imovel: %s\n",listTerrenos[j].dispo);
+                                  printf("Area do terreno: %f\n",listTerrenos[j].area);
+                                  printf("Rua do Terreno: %s\n",listTerrenos[j].endereco.rua);
+                                  printf("Numeto do Terreno: %s\n",listTerrenos[j].endereco.numero);
+                                  printf("Bairro do Terreno: %s\n",listTerrenos[j].endereco.bairro);
+                                  printf("CEP: %s\n",listTerrenos[j].endereco.CEP);
+                                  printf("Cidade: %s\n",listTerrenos[j].endereco.cidade);
+
                             break;
 
                         }
@@ -394,8 +459,13 @@ void BuscaImovelValor(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terre
       printf("------Casas-------\n\n");
         for(i = 0; i < QNT; i++){
           if(listCasas[i].valorcasa>valor){
+
+               if(strcmp(listCasas[i].anuncio,"Removido") != 0) {
                     printf("%s:------%.0f\n",listCasas[i].anuncio,listCasas[i].valorcasa);
-             }
+               }
+
+         }
+
 
         }
 
@@ -403,7 +473,9 @@ void BuscaImovelValor(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terre
         for(i = 0; i < QNT; i++){
 
             if(listApartamenots[i].valor>valor){
-                    printf("%s:------%.0f\n",listApartamenots[i].anuncio,listApartamenots[i].valor);
+                    if(strcmp(listApartamenots[i].anuncio,"Removido") != 0){
+                        printf("%s:------%.0f\n",listApartamenots[i].anuncio,listApartamenots[i].valor);
+                    }
              }
 
         }
@@ -412,7 +484,9 @@ void BuscaImovelValor(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terre
         for(i = 0; i < QNT; i++){
 
             if(listTerrenos[i].valor>valor){
-                    printf("%s:------%.0f\n",listTerrenos[i].anuncio,listTerrenos[i].valor);
+                    if(strcmp(listTerrenos[i].anuncio,"Removido") != 0){
+                        printf("%s:------%.0f\n",listTerrenos[i].anuncio,listTerrenos[i].valor);
+                    }
              }
         }
 
@@ -571,7 +645,7 @@ void ExibeApartamento(t_Apartameno listApartamenots[]){
 void ExibeTerreno(t_Terreno listTerr[]){
 
     int i,k;
-              printf("Estou aqui 1");
+
             for(k = 0; k < QNT; k++){
 
                 if(!(strcmp(listTerr[k].anuncio,""))){
@@ -614,14 +688,17 @@ void RemoverImovel(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno 
 
 
                                  if(!(strcmp(Anuncio,listApartamenots[j].anuncio))){
+
                                        strcpy(listApartamenots[j].anuncio,"Removido");
                                         break;
                                 }
                                 if(!(strcmp(Anuncio,listCasas[j].anuncio))){
+
                                        strcpy(listCasas[j].anuncio,"Removido");
                                     break;
                                 }
                                 if(!(strcmp(Anuncio,listTerrenos[j].anuncio))){
+
                                        strcpy(listTerrenos[j].anuncio,"Removido");
                                     break;
 
@@ -1044,12 +1121,12 @@ int main(){
 
     setlocale(LC_ALL, "Portuguese");
 
-    t_Casa Casas[QNT];
-    t_Apartameno Apartamentos[QNT];
-    t_Terreno Terrenos[QNT];
-    int qcad,op,sair,opCadastro,opExibir,opConsulta,opBusca;
-    lerDados(Casas,Apartamentos,Terrenos);
-/*
+    t_Casa Casas[QNT] = {};
+    t_Apartameno Apartamentos[QNT] = {};
+    t_Terreno Terrenos[QNT] = {};
+    int qcad,op,sair = 0,opCadastro,opExibir,opConsulta,opBusca;
+//    lerDados(Casas,Apartamentos,Terrenos);
+
          do{
         system("color 02");
 
@@ -1272,7 +1349,7 @@ int main(){
 
 
 }while(!sair);
-*/
+
 
 return 0;
 }
