@@ -58,11 +58,6 @@ typedef struct{
 
 }t_Terreno;
 
-//----------------------------------------------
-//qcad significa a quantidade de coisas que o
-//usuario quer cadastrar e deve ser chamada no menu
-
-
 void CadastrarApartamento(t_Apartameno listApartamenots[],int qcad){
 
     int i,k;
@@ -965,19 +960,9 @@ void SalvarDados(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno li
 void lerDados(t_Casa listCasas[],t_Apartameno listApartamenots[],t_Terreno listTerr[]){
 
 FILE *Casa = fopen("Arquivo_Casa.txt","r+");
-        int c,a,t,aux;
+        int c = 0,a = 0,t = 0;
 
-                for(c = 0; c < QNT; c++){
-
-                        if(!(strcmp(listCasas[c].anuncio,""))){
-                            break;
-
-                        }
-                    }
-                aux = c  ;
-
-
-                for(c = 0; c < aux; c++){
+            while(1){
 
                 fscanf(Casa,"%[^\n]\n",listCasas[c].anuncio);
                 fscanf(Casa,"%f\n",&listCasas[c].valorcasa);
@@ -991,28 +976,20 @@ FILE *Casa = fopen("Arquivo_Casa.txt","r+");
                 fscanf(Casa,"%[^\n]\n",listCasas[c].endereco.bairro);
                 fscanf(Casa,"%[^\n]\n",listCasas[c].endereco.CEP);
                 fscanf(Casa,"%[^\n]\n",listCasas[c].endereco.cidade);
+                c++;
+                if(feof(Casa)){
+                    break;
+                }
+            }
 
-
-                 }
-
-
-        fclose(Casa);
+    fclose(Casa);
 
 
                 FILE *Apart = fopen("Arquivo_Apartamento.txt","r+");
 
 
-                    for(a = 0; a < QNT; a++){
 
-                            if(!(strcmp(listApartamenots[a].anuncio,""))){
-                                break;
-
-                            }
-                        }
-                    aux = a+1;
-
-
-                    for(a = 0; a < aux; a++){
+                   while(1){
 
                         fscanf(Apart,"%[^\n]\n",listApartamenots[a].anuncio);
                         fscanf(Apart,"%f\n",&listApartamenots[a].valor);
@@ -1027,31 +1004,22 @@ FILE *Casa = fopen("Arquivo_Casa.txt","r+");
                         fscanf(Apart,"%[^\n]\n",listApartamenots[a].endereco.bairro);
                         fscanf(Apart,"%[^\n]\n",listApartamenots[a].endereco.CEP);
                         fscanf(Apart,"%[^\n]\n",listApartamenots[a].endereco.cidade);
+                        a++;
+                        if(feof(Apart)){
 
-                    }
+                            break;
+                        }
 
+                  }
 
-
-             fclose(Apart);
+            fclose(Apart);
 
 
                   FILE *Terr = fopen("Arquivo_Terreno.txt","r+");
 
 
-                    for(t = 0; t < QNT; t++){
 
-                        if(!(strcmp(listTerr[t].anuncio,""))){
-                            break;
-
-                        }
-                    }
-
-
-                    aux = t+1;
-
-
-            for(t = 0; t < aux; t++){
-
+           while(1){
 
                 fscanf(Terr,"%[^\n]\n",listTerr[t].anuncio);
                 fscanf(Terr,"%f\n",&listTerr[t].valor);
@@ -1062,7 +1030,10 @@ FILE *Casa = fopen("Arquivo_Casa.txt","r+");
                 fscanf(Terr,"%[^\n]\n",listTerr[t].endereco.bairro);
                 fscanf(Terr,"%[^\n]\n",listTerr[t].endereco.CEP);
                 fscanf(Terr,"%[^\n]\n",listTerr[t].endereco.cidade);
-
+                  t++;
+                  if(feof(Apart)){
+                    break;
+                }
             }
 
  fclose(Terr);
@@ -1076,7 +1047,7 @@ int main(){
     t_Casa Casas[QNT];
     t_Apartameno Apartamentos[QNT];
     t_Terreno Terrenos[QNT];
-    int qcad,op,sair = 0,sair2 = 0,opCadastro,opExibir,opConsulta,opBusca;
+    int qcad,op,sair,opCadastro,opExibir,opConsulta,opBusca;
     lerDados(Casas,Apartamentos,Terrenos);
 
          do{
@@ -1301,6 +1272,7 @@ int main(){
 
 
 }while(!sair);
+
 
 
 return 0;
